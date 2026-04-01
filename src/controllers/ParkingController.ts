@@ -36,3 +36,12 @@ export const getParkingStatus = async (req: Request, res: Response) => {
     return res.status(500).json({ error: "Server error" });
   }
 };
+
+export const getAllParkingStatuses = async (req, res) => {
+  try {
+    const parkings = await Parking.find();
+    res.json(parkings);
+  } catch (error) {
+    res.status(500).json({ message: "Failed to fetch parking spots" });
+  }
+};
